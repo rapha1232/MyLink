@@ -21,7 +21,7 @@ export default function Home() {
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-[#001C30]">
         <AppTitle />
-        <div className="flex h-fit w-2/4 flex-col items-center justify-center rounded-xl bg-gradient-to-br from-[#64CCC5] to-[#DAFFFB]">
+        <div className="mt-8 flex h-fit w-2/4 flex-col items-center justify-center rounded-xl bg-gradient-to-br from-[#64CCC5] to-[#DAFFFB]">
           {texts.map((text, idx) => (
             <LinkItem key={idx} write={text} />
           ))}
