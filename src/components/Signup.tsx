@@ -1,29 +1,31 @@
-import React, { FormEvent, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import auth from "~/firebase";
 import {
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import auth from "~/firebase";
-import SignUp from "./Signup";
+import { FormEvent, useState } from "react";
 import Head from "next/head";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import Login from "./Login";
 
-const Login = () => {
+export default function SignUp() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showSignUp, setShowSignUp] = useState(false);
-
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => console.log(userCredentials))
-      .catch((error) => console.log(error));
-  };
+  const [password, setPassWord] = useState("");
+  const [showLogin, setShowLogin] = useState(false);
 
   const handleSignUpClick = () => {
-    setShowSignUp(true);
+    setShowLogin(true);
+  };
+
+  const emailAndPassSignUp = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredentials) => console.log(userCredentials))
+      .catch((error) => console.log(error));
   };
 
   const googleSignIn = () => {
@@ -32,15 +34,14 @@ const Login = () => {
       .then(() => console.log("logged in with google"))
       .catch((error) => console.log(error));
   };
-
   return (
     <>
       <Head>
-        <title>Login</title>
-        <meta name="description" content="Login" />
+        <title>SignUp</title>
+        <meta name="description" content="SignUp" />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      {showSignUp ? (
+      {showLogin ? (
         <SignUp />
       ) : (
         <div className="min-w-screen min-h-screen bg-[#080710]">
@@ -50,11 +51,9 @@ const Login = () => {
           </div>
           <form
             className="absolute inset-1/2 h-96 w-80 -translate-x-1/2 -translate-y-1/2 transform rounded-2xl border-2 border-opacity-10 bg-white bg-opacity-10 px-10 py-4 shadow-lg backdrop-blur-lg"
-            onSubmit={handleLogin}
+            onSubmit={emailAndPassSignUp}
           >
-            <h3 className="mb-2 text-2xl font-semibold text-white">
-              Login Here
-            </h3>
+            <h3 className="mb-2 text-2xl font-semibold text-white">Sign Up</h3>
             <label htmlFor="userName" className="text-lg font-semibold">
               Email
             </label>
@@ -62,7 +61,7 @@ const Login = () => {
               type="email"
               id="userName"
               placeholder="Email"
-              className="mt-2 block h-12 w-full rounded-md bg-white/20 bg-opacity-10 px-2 text-lg font-light placeholder-gray-200"
+              className="mt-2 block h-12 w-full rounded-md bg-white/20 bg-opacity-10 px-2 text-lg font-light placeholder-gray-400"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -73,12 +72,12 @@ const Login = () => {
               type="password"
               id="passWord"
               placeholder="Password"
-              className="mt-2 block h-12 w-full rounded-md bg-white/20 bg-opacity-10 px-2 text-lg font-light placeholder-gray-200"
+              className="mt-2 block h-12 w-full rounded-md bg-white/20 bg-opacity-10 px-2 text-lg font-light placeholder-gray-400"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassWord(e.target.value)}
             />
             <button className="mt-6 w-full cursor-pointer rounded-md bg-white py-2 text-lg font-semibold text-black">
-              Sign In
+              Sign Up
             </button>
             <div className="mt-6">
               <div
@@ -92,12 +91,12 @@ const Login = () => {
               </div>
             </div>
             <p className="text-white">
-              Don't have an account?{" "}
+              Already have an account?{" "}
               <button
-                onClick={handleSignUpClick}
+                onClick={() => setShowLogin(true)}
                 className="text-blue-400 underline focus:outline-none"
               >
-                Login
+                Sign Up
               </button>
             </p>
           </form>
@@ -105,6 +104,4 @@ const Login = () => {
       )}
     </>
   );
-};
-
-export default Login;
+}
