@@ -1,10 +1,10 @@
 import { User, onAuthStateChanged, signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Login from "~/components/Login";
 import MainPage from "~/components/mainPage";
-import auth from "~/firebase";
+import {auth, firestore} from "~/firebase";
 
-const AuthDetails = () => {
+const AuthDetails= () => {
   const [authUser, setAuthUser] = useState<User | null>(null);
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -29,7 +29,7 @@ const AuthDetails = () => {
     <>
       {authUser ? (
         <>
-          <MainPage /> <button onClick={userSignOut}>Sign Out</button>
+          <MainPage photoURL={authUser.photoURL!} alt="Profile"/> <button onClick={userSignOut}>Sign Out</button>
         </>
       ) : (
         <Login />

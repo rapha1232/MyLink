@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import auth from "~/firebase";
+import {auth} from "~/firebase";
 import SignUp from "./Signup";
 import Head from "next/head";
 
@@ -52,7 +52,7 @@ const Login = () => {
             className="absolute inset-1/2 h-96 w-80 -translate-x-1/2 -translate-y-1/2 transform rounded-2xl border-2 border-opacity-10 bg-white bg-opacity-10 px-10 py-4 shadow-lg backdrop-blur-lg"
             onSubmit={handleLogin}
           >
-            <h3 className="mb-2 text-2xl font-semibold text-white">
+            <h3 className="mb-1 text-2xl font-semibold text-white">
               Login Here
             </h3>
             <label htmlFor="userName" className="text-lg font-semibold">

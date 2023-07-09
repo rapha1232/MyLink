@@ -1,20 +1,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import auth from "~/firebase";
+import {auth} from "~/firebase";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { FormEvent, useState } from "react";
 import Head from "next/head";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import Login from "./Login";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
-  const [password, setPassWord] = useState("");
+  const [password, setPassword] = useState("");
   const [showLogin, setShowLogin] = useState(false);
 
   const handleSignUpClick = () => {
@@ -42,7 +40,7 @@ export default function SignUp() {
         <link rel="icon" href="/icon.ico" />
       </Head>
       {showLogin ? (
-        <SignUp />
+        <Login />
       ) : (
         <div className="min-w-screen min-h-screen bg-[#080710]">
           <div className="absolute inset-1/2 h-80 w-72 -translate-x-1/2 -translate-y-1/2 transform">
@@ -53,7 +51,7 @@ export default function SignUp() {
             className="absolute inset-1/2 h-96 w-80 -translate-x-1/2 -translate-y-1/2 transform rounded-2xl border-2 border-opacity-10 bg-white bg-opacity-10 px-10 py-4 shadow-lg backdrop-blur-lg"
             onSubmit={emailAndPassSignUp}
           >
-            <h3 className="mb-2 text-2xl font-semibold text-white">Sign Up</h3>
+            <h3 className="mb-1 text-2xl font-semibold text-white">Sign Up</h3>
             <label htmlFor="userName" className="text-lg font-semibold">
               Email
             </label>
@@ -61,7 +59,7 @@ export default function SignUp() {
               type="email"
               id="userName"
               placeholder="Email"
-              className="mt-2 block h-12 w-full rounded-md bg-white/20 bg-opacity-10 px-2 text-lg font-light placeholder-gray-400"
+              className="mt-2 block h-12 w-full rounded-md bg-white/20 bg-opacity-10 px-2 text-lg font-light placeholder-gray-200"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -72,9 +70,9 @@ export default function SignUp() {
               type="password"
               id="passWord"
               placeholder="Password"
-              className="mt-2 block h-12 w-full rounded-md bg-white/20 bg-opacity-10 px-2 text-lg font-light placeholder-gray-400"
+              className="mt-2 block h-12 w-full rounded-md bg-white/20 bg-opacity-10 px-2 text-lg font-light placeholder-gray-200"
               value={password}
-              onChange={(e) => setPassWord(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <button className="mt-6 w-full cursor-pointer rounded-md bg-white py-2 text-lg font-semibold text-black">
               Sign Up
