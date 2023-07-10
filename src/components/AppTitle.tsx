@@ -1,7 +1,6 @@
 import { FC } from "react";
 import ProfilePicture from "./ProfilePicture";
 import { auth } from "~/firebase";
-import defaultUserPfp from "../../public/defaultUserPfp.jpeg"
 import { StaticImageData } from "next/image";
 
 interface AppTitleProps {

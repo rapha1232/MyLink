@@ -1,6 +1,5 @@
 import { StaticImageData } from "next/image";
 import { FC } from "react";
-import defaultUserPfp from "../../public/defaultUserPfp.jpeg"
 interface ProfilePictureProps {
   photoURL?: string | null;
   alt: string;
