@@ -1,5 +1,6 @@
 import Head from "next/head";
 import AuthDetails from "~/utils/AuthDetails";
+import React from 'react'
 
 export default function Home() {
   return (

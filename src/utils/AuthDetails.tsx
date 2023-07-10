@@ -29,7 +29,7 @@ const AuthDetails= () => {
     <>
       {authUser ? (
         <>
-          <MainPage photoURL={authUser.photoURL!} alt="Profile"/> <button onClick={userSignOut}>Sign Out</button>
+          <MainPage photoURL={authUser.photoURL!} alt="Profile" userName={authUser.displayName?.toString() ?? "User"}/> <button onClick={userSignOut}> Sign Out </button>
         </>
       ) : (
         <Login />

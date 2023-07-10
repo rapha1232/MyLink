@@ -6,7 +6,7 @@ interface ProfilePictureProps {
 }
 
 const ProfilePicture: FC<ProfilePictureProps> = ({ photoURL, alt }) => {
-    return photoURL ? <img src={photoURL} alt={alt} className="mb-2 rounded-full w-20"/> : null;
+    return photoURL ? <img src={photoURL} alt={alt} className="mb-6 rounded-full w-1/12 hover:scale-[120%] transition-all"/> : null;
 };
 
 export default ProfilePicture;
