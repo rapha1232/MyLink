@@ -78,7 +78,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button className="mt-6 w-full cursor-pointer rounded-md bg-white py-2 text-lg font-semibold text-black">
-              Sign In
+              Login
             </button>
             <div className="mt-6">
               <div
@@ -97,7 +97,7 @@ const Login = () => {
                 onClick={handleSignUpClick}
                 className="text-blue-400 underline focus:outline-none"
               >
-                Login
+                Sign Up
               </button>
             </p>
           </form>

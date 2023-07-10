@@ -1,7 +1,7 @@
 import { User, onAuthStateChanged, signOut } from "firebase/auth";
 import React, { FC, useEffect, useState } from "react";
-import Login from "~/components/Login";
-import MainPage from "~/components/mainPage";
+import Login from "~/pages/Login";
+import MainPage from "~/pages/mainPage";
 import {auth, firestore} from "~/firebase";
 
 const AuthDetails= () => {

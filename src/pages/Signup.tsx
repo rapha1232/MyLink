@@ -94,7 +94,7 @@ export default function SignUp() {
                 onClick={() => setShowLogin(true)}
                 className="text-blue-400 underline focus:outline-none"
               >
-                Sign Up
+                Login
               </button>
             </p>
           </form>
